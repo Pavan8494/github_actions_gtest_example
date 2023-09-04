@@ -74,53 +74,28 @@ int StringCalculator::Add(const string &input) {
     return accumulate(numbers.begin(), numbers.end(), 0);
 }
 
-class string_calculator_add : Public Test{
+class string_calculator_add : public TestWithParam<std::tuple<string,int>{
 protected:
     StringCalculator objUnderTest;
   
 }
 
 
-TEST_F(string_calculator_add,When_Passed_A_Single_Number, returns_0_for_empty_string) {
-    //Arrange
-    //StringCalculator objUnderTest;
-    string input = "";
-    int expectedValue = 0;
-    //Act
-int actualValue=objUnderTest.Add(input);
-     //Assert - Fatal
-ASSERT_EQ(actualValue, expectedValue);
+TEST_P(string_calculator_add,When_Passed_A_Single_Number, AssertAddOperation) {
+    const std::tuple<string,int> & parameter = GetParam();
+    string input = std::get<0>(parameter);
+    int expectedValue = std::get<1>(parameter);
+    int actualValur = actualValue=objUnderTest.Add(input);
+    ASSERT_EQ(actualValue, expectedValue);
 }
+INSTANTIATE_TEST_SUITE_P(
+ StringCalculatorParameterTest,
+string_calculator_add,
+Values(std::make_tuple("",0),
+       std::make_tuple("1",1),
+       std::make_tuple("1,2",3),
+       std::make_tuple("1,2,3",6)
+));
 
-TEST_F(string_calculator_add,When_Passed_A_Single_Number, returns_1_for_1) {
-    //Arrange
-   // StringCalculator objUnderTest;
-    string input = "1";
-    int expectedValue = 1;
-    //Act
-int actualValue=objUnderTest.Add(input);
-     //Assert - Fatal
-ASSERT_EQ(actualValue, expectedValue);
-}
 
-TEST_F(string_calculator_add,When_Passed_A_Single_Number, returns_3_for_1_2) {
-    //Arrange
-//  StringCalculator objUnderTest;
-    string input = "1,2";
-    int expectedValue = 3;
-    //Act
-int actualValue=objUnderTest.Add(input);
-     //Assert - Fatal
-ASSERT_EQ(actualValue, expectedValue);
-}
 
-TEST_F(string_calculator_add,When_Passed_A_Single_Number, returns_6_for_1_2_3) {
-    //Arrange
-  //  StringCalculator objUnderTest;
-    string input = "1,2,3";
-    int expectedValue = 6;
-    //Act
-int actualValue=objUnderTest.Add(input);
-     //Assert - Fatal
-ASSERT_EQ(actualValue, expectedValue);
-}
