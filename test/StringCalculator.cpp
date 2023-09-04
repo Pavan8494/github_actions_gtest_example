@@ -75,7 +75,7 @@ int StringCalculator::Add(const string &input) {
 }
 
 class string_calculator_add : Public Test{
-Protected:
+protected:
     StringCalculator objUnderTest;
   
 }
