@@ -73,9 +73,17 @@ int StringCalculator::Add(const string &input) {
 
     return accumulate(numbers.begin(), numbers.end(), 0);
 }
-TEST(string_calculator_add_When_Passed_A_Single_Number, returns_0_for_empty_string) {
-    //Arrange
+
+class string_calculator_add : Public Test{
+Protected:
     StringCalculator objUnderTest;
+  
+}
+
+
+TEST_F(string_calculator_add,When_Passed_A_Single_Number, returns_0_for_empty_string) {
+    //Arrange
+    //StringCalculator objUnderTest;
     string input = "";
     int expectedValue = 0;
     //Act
@@ -84,9 +92,9 @@ int actualValue=objUnderTest.Add(input);
 ASSERT_EQ(actualValue, expectedValue);
 }
 
-TEST(string_calculator_add_When_Passed_A_Single_Number, returns_1_for_1) {
+TEST_F(string_calculator_add,When_Passed_A_Single_Number, returns_1_for_1) {
     //Arrange
-    StringCalculator objUnderTest;
+   // StringCalculator objUnderTest;
     string input = "1";
     int expectedValue = 1;
     //Act
@@ -95,9 +103,9 @@ int actualValue=objUnderTest.Add(input);
 ASSERT_EQ(actualValue, expectedValue);
 }
 
-TEST(string_calculator_add_When_Passed_A_Single_Number, returns_3_for_1_2) {
+TEST_F(string_calculator_add,When_Passed_A_Single_Number, returns_3_for_1_2) {
     //Arrange
-    StringCalculator objUnderTest;
+//  StringCalculator objUnderTest;
     string input = "1,2";
     int expectedValue = 3;
     //Act
@@ -106,9 +114,9 @@ int actualValue=objUnderTest.Add(input);
 ASSERT_EQ(actualValue, expectedValue);
 }
 
-TEST(string_calculator_add_When_Passed_A_Single_Number, returns_6_for_1_2_3) {
+TEST_F(string_calculator_add,When_Passed_A_Single_Number, returns_6_for_1_2_3) {
     //Arrange
-    StringCalculator objUnderTest;
+  //  StringCalculator objUnderTest;
     string input = "1,2,3";
     int expectedValue = 6;
     //Act
