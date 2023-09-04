@@ -105,3 +105,14 @@ int actualValue=objUnderTest.Add(input);
      //Assert - Fatal
 ASSERT_EQ(actualValue, expectedValue);
 }
+
+TEST(string_calculator_add_When_Passed_A_Single_Number, returns_6_for_1_2_3) {
+    //Arrange
+    StringCalculator objUnderTest;
+    string input = "1,2,3";
+    int expectedValue = 6;
+    //Act
+int actualValue=objUnderTest.Add(input);
+     //Assert - Fatal
+ASSERT_EQ(actualValue, expectedValue);
+}
