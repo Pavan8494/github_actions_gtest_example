@@ -74,7 +74,7 @@ int StringCalculator::Add(const string &input) {
     return accumulate(numbers.begin(), numbers.end(), 0);
 }
 
-class string_calculator_add : public TestWithParam<std::tuple<string,int>{
+class string_calculator_add : public TestWithParam<std::tuple<string,int>>{
 protected:
     StringCalculator objUnderTest;
   
