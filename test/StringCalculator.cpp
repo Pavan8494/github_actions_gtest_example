@@ -78,14 +78,19 @@ TEST(string_calculator_add_When_Passed_A_Single_Number, returns_0_for_empty_stri
     StringCalculator objUnderTest;
     string input = "";
     int expectedValue = 0;
-
- 
-
     //Act
 int actualValue=objUnderTest.Add(input);
+     //Assert - Fatal
+ASSERT_EQ(actualValue, expectedValue);
+}
 
- 
-
+TEST(string_calculator_add_When_Passed_A_Single_Number, returns_1_for_1) {
+    //Arrange
+    StringCalculator objUnderTest;
+    string input = "1";
+    int expectedValue = 1;
+    //Act
+int actualValue=objUnderTest.Add(input);
      //Assert - Fatal
 ASSERT_EQ(actualValue, expectedValue);
 }
